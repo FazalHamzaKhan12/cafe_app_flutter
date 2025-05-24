@@ -1,4 +1,4 @@
-import 'package:coffee_shop/screens/on_boarding_screen.dart';
+import 'package:coffee_shop/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Coffee Shop',
-      home: OnboardingScreen(),
+      home: HomeScreen(),
     );
   }
 }

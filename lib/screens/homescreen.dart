@@ -1,3 +1,4 @@
+import 'package:coffee_shop/screens/coffee_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,59 +73,62 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 95),
+                  buildScrollForCoffee(),
+                  SizedBox(height: 20),
+                  Expanded(child: CoffeeListScreen()),
                 ],
               ),
             ),
             buildPromoCard(),
-            SizedBox(
-              height: 50,
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  final isSelected = selectedIndex == index;
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 12),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 25,
-                        vertical: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        color:
-                            isSelected ? const Color(0xffC67C4E) : Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          if (isSelected)
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
-                            ),
-                        ],
-                      ),
-                      child: Text(
-                        categories[index],
-                        style: TextStyle(
-                          fontFamily: 'Sora',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: isSelected ? Colors.white : Colors.black,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
           ],
         ),
+      ),
+    );
+  }
+
+  SizedBox buildScrollForCoffee() {
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          final isSelected = selectedIndex == index;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: Container(
+              margin: const EdgeInsets.only(right: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 14),
+              decoration: BoxDecoration(
+                color: isSelected ? const Color(0xffC67C4E) : Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  if (isSelected)
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                    ),
+                ],
+              ),
+              child: Text(
+                categories[index],
+                style: TextStyle(
+                  fontFamily: 'Sora',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Colors.white : Colors.black,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
