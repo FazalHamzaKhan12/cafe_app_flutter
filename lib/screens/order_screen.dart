@@ -15,6 +15,20 @@ class _OrderScreenState extends State<OrderScreen> {
   int selectedOption = 0;
   double devliveryFee = 2.0;
 
+  static int counter = 1;
+
+  incrementTap() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  decrementTap() {
+    setState(() {
+      counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,12 +247,15 @@ class _OrderScreenState extends State<OrderScreen> {
                           border: Border.all(color: Colors.black26),
                           shape: BoxShape.circle,
                         ),
-                        child: const Center(
-                          child: Icon(Icons.remove, size: 16),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: decrementTap,
+                            icon: Icon(Icons.remove, size: 15),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const Text("1", style: TextStyle(fontSize: 16)),
+                      Text("$counter", style: TextStyle(fontSize: 16)),
                       const SizedBox(width: 8),
                       Container(
                         height: 30,
@@ -247,7 +264,12 @@ class _OrderScreenState extends State<OrderScreen> {
                           border: Border.all(color: Colors.black26),
                           shape: BoxShape.circle,
                         ),
-                        child: const Center(child: Icon(Icons.add, size: 16)),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: incrementTap,
+                            icon: const Icon(Icons.add, size: 15),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -301,10 +323,7 @@ class _OrderScreenState extends State<OrderScreen> {
               SizedBox(width: 25),
               Text("Price", style: TextStyle(fontFamily: "Sora")),
               SizedBox(width: 320),
-              Text(
-                "\$ ${widget.coffees.price.toStringAsFixed(2)}",
-                style: TextStyle(fontFamily: "Sora"),
-              ),
+              Text("\$${widget.coffees.price * counter}"),
             ],
           ),
           SizedBox(height: 10),
@@ -349,7 +368,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         Padding(
                           padding: const EdgeInsets.only(right: 55.0),
                           child: Text(
-                            "\$${(widget.coffees.price + devliveryFee).toStringAsFixed(2)}",
+                            "\$${(widget.coffees.price * counter + devliveryFee).toStringAsFixed(2)}",
                             style: TextStyle(
                               color: Color(0xffC67C4E),
                               fontFamily: "Sora",
