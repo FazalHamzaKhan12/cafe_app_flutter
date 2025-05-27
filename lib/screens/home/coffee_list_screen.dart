@@ -1,6 +1,6 @@
 import 'package:coffee_shop/screens/coffee_detailscreen.dart';
 import 'package:flutter/material.dart';
-import '../data/coffee_data.dart';
+import '../../data/coffee_data.dart';
 
 class CoffeeListScreen extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
-import 'package:coffee_shop/screens/dilvery_screen.dart';
+import 'package:coffee_shop/screens/order/dilvery_screen.dart';
 import 'package:flutter/material.dart';
-import '../models/coffee_model.dart';
+import '../../models/coffee_model.dart';
 
 class OrderScreen extends StatefulWidget {
   final Coffee coffees;

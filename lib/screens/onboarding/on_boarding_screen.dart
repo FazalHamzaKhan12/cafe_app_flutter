@@ -1,4 +1,4 @@
-import 'package:coffee_shop/screens/homescreen.dart';
+import 'package:coffee_shop/screens/home/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {

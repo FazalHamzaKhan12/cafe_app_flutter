@@ -1,4 +1,4 @@
-import 'package:coffee_shop/screens/coffee_list_screen.dart';
+import 'package:coffee_shop/screens/home/coffee_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
